@@ -5,7 +5,6 @@ import (
 	"net"
 
 	"github.com/Dreamacro/clash/common/sockopt"
-	"github.com/Dreamacro/clash/context"
 	"github.com/Dreamacro/clash/log"
 
 	D "github.com/miekg/dns"
@@ -43,7 +42,6 @@ func handlerWithContext(handler handler, msg *D.Msg) (*D.Msg, error) {
 	return handler(ctx, msg)
 }
 
-func (s *Server) setHandler(handler handler) {
 	s.handler = handler
 }
 
@@ -77,7 +75,6 @@ func ReCreateServer(addr string, resolver *Resolver, mapper *ResolverEnhancer) {
 	}
 
 	udpAddr, err := net.ResolveUDPAddr("udp", addr)
-	if err != nil {
 		return
 	}
 
